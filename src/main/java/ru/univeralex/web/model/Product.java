@@ -9,6 +9,14 @@ public class Product {
         this.cost = cost;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Double getCost() {
+        return cost;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
