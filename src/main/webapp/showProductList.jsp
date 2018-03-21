@@ -18,7 +18,7 @@
         <th>Name</th>
         <th>Cost</th>
     </tr>
-    <% List<Product> products = (List<Product>) session.getAttribute("products");
+    <% List<Product> products = (List<Product>) request.getAttribute("products");
         for (Product product : products) {%>
     <tr>
         <td><%out.println(product.getName());%></td>

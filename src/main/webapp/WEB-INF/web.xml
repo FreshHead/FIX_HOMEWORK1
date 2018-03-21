@@ -7,13 +7,8 @@
     <servlet>
         <servlet-name>GetProductListController</servlet-name>
         <display-name>GetProductListController</display-name>
-        <description></description>
         <servlet-class>ru.univeralex.web.ProductListController</servlet-class>
     </servlet>
-    <!--<servlet>-->
-    <!--<servlet-name>Servlet</servlet-name>-->
-    <!--<servlet-class>ru.univeralex.web.Servlet</servlet-class>-->
-    <!--</servlet>-->
     <servlet-mapping>
         <servlet-name>GetProductListController</servlet-name>
         <url-pattern>/getProductList</url-pattern>
