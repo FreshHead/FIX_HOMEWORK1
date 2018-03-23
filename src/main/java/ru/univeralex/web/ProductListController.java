@@ -17,17 +17,29 @@ import java.util.List;
  */
 @WebServlet("/productList")
 public class ProductListController extends HttpServlet {
+    private List<Product> products;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-        List<Product> products = new ArrayList<Product>();
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        products = new ArrayList<Product>();
         products.add(new Product("car", 400_000.0));
         products.add(new Product("bread", 25.50));
         products.add(new Product("book", 1000.0));
+    }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setAttribute("products", products);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/showProductList.jsp");
         dispatcher.forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String productName = req.getParameter("name");
+        Double productCost = Double.valueOf(req.getParameter("cost"));
+        products.add(new Product(productName, productCost));
+        doGet(req, resp);
     }
 
 

@@ -24,4 +24,13 @@
         </tr>
     </c:forEach>
 </table>
+<form method="post" action="/productList">
+    <label for="name">Product name
+        <input class="input-field" type="text" id="name" name="name">
+    </label>
+    <label for="cost">Product cost
+        <input class="input-field" type="text" id="cost" name="cost">
+    </label>
+    <input type="submit" value="Add product">
+</form>
 </html>
