@@ -1,7 +1,6 @@
-<%@ page import="ru.univeralex.web.model.Product" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,12 +17,11 @@
         <th>Name</th>
         <th>Cost</th>
     </tr>
-    <% List<Product> products = (List<Product>) request.getAttribute("products");
-        for (Product product : products) {%>
-    <tr>
-        <td><%out.println(product.getName());%></td>
-        <td><%out.println(product.getCost());%></td>
-    </tr>
-    <%} %>
+    <c:forEach items="${products}" var="product">
+        <tr>
+            <td>${product.name}</td>
+            <td>${product.cost}</td>
+        </tr>
+    </c:forEach>
 </table>
 </html>
