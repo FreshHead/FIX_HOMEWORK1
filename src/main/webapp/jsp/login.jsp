@@ -1,26 +1,22 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="ru.univeralex.web.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<html>
+<html lang="en">
 <head>
-    <title>Title</title>
-    <%--<link href="/css/styles.css" rel="stylesheet" type="text/css">--%>
+    <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-<div class="form-style-2">
-    <div class="form-style-2-heading">
-        Please Login!
-    </div>
-    <form method="post" action="/login">
-        <label for="name">User name
-            <input class="input-field" type="text" id="name" name="name">
-        </label>
-        <label for="password">Password
-            <input class="input-field" type="password" id="password" name="password">
-        </label>
-        <input type="submit" value="Login">
+
+<div class="wrapper">
+    <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading">Please login</h2>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Username" required=""
+               autofocus=""/>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required=""/>
+        <input type="submit" value="Login" class="btn btn-lg btn-primary btn-block">
     </form>
 </div>
+
 </body>
+
 </html>
