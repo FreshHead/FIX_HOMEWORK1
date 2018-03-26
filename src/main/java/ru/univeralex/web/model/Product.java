@@ -17,11 +17,4 @@ public class Product {
         return cost;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", cost=" + cost +
-                '}';
-    }
 }

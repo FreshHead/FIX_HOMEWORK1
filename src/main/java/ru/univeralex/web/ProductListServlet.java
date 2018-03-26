@@ -14,28 +14,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Servlet implementation class ProductListController
+ * Servlet implementation class ProductListServlet
  */
 @WebServlet("/productList")
-public class ProductListController extends HttpServlet {
-    private List<Product> products;
-    ProductDao productDao;
+public class ProductListServlet extends HttpServlet {
+    private ProductDao productDao;
 
     @Override
     public void init() throws ServletException {
         super.init();
         productDao = new ProductDao();
-
-//        products = new ArrayList<Product>();
-//        products.add(new Product("car", 400_000.0));
-//        products.add(new Product("bread", 25.50));
-//        products.add(new Product("book", 1000.0));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        products = productDao.getProducts();
-        request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/showProductList.jsp");
+        request.setAttribute("products", productDao.getProducts());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/showProductList.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -46,6 +39,5 @@ public class ProductListController extends HttpServlet {
         productDao.addProduct(new Product(productName, productCost));
         doGet(req, resp);
     }
-
 
 }
