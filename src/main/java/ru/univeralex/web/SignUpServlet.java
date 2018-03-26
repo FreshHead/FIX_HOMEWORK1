@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -38,6 +39,10 @@ public class SignUpServlet extends HttpServlet {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
         userDao.addUser(new User(name, password));
-        doGet(req, resp);
+        HttpSession session = req.getSession();
+        // кладем в атрибуты сессии атрибут user с именем пользователя
+        session.setAttribute("user", name);
+        resp.sendRedirect(req.getContextPath() + "/productList");
+//        doGet(req, resp);
     }
 }
