@@ -65,8 +65,8 @@ public class UserDao {
             Statement statement = connection.createStatement();
 
             ResultSet resultSet = statement.executeQuery(
-                    "SELECT EXISTS(SELECT 1 FROM security.user " +
-                            "WHERE username = '" + name + "' AND password = '" + password + "')"
+                    "SELECT * FROM security.user " +
+                            "WHERE username = '" + name + "' AND password = '" + password + "'"
             );
             return resultSet.next();
         } catch (SQLException e) {
