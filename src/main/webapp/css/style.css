@@ -14,6 +14,13 @@ body {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+.registered {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 30px;
@@ -21,7 +28,7 @@ body {
 .form-signin .checkbox {
   font-weight: normal;
 }
-.form-signin .form-control {
+.form-signin .form-control .registered {
   position: relative;
   font-size: 16px;
   height: auto;
