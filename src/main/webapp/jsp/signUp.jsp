@@ -11,6 +11,7 @@
 <div class="form-style-2">
     <div class="form-style-2-heading">
         Please Sign Up!
+        <p><a href="/login">Already registered?</a></p>
     </div>
     <form method="post" action="/signUp">
         <label for="name">User name
