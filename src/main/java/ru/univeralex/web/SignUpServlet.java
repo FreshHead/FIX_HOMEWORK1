@@ -1,7 +1,8 @@
 package ru.univeralex.web;
 
+import org.mindrot.jbcrypt.BCrypt;
 import ru.univeralex.web.model.User;
-import ru.univeralex.web.model.UserDao;
+import ru.univeralex.web.dao.UserDaoImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,16 +20,16 @@ import java.util.List;
 @WebServlet("/signUp")
 public class SignUpServlet extends HttpServlet {
 
-    private UserDao userDao;
+    private UserDaoImpl userDaoImpl;
 
     @Override
     public void init() {
-        this.userDao = new UserDao();
+        this.userDaoImpl = new UserDaoImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<User> users = userDao.getUsers();
+        List<User> users = userDaoImpl.findAll();
         req.setAttribute("usersFromServer", users);
         RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/jsp/signUp.jsp");
         dispatcher.forward(req, resp);
@@ -38,11 +39,9 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
-        userDao.addUser(new User(name, password));
+        userDaoImpl.save(new User(name, BCrypt.hashpw(password,BCrypt.gensalt())));
         HttpSession session = req.getSession();
-        // кладем в атрибуты сессии атрибут user с именем пользователя
         session.setAttribute("user", name);
         resp.sendRedirect(req.getContextPath() + "/productList");
-//        doGet(req, resp);
     }
 }

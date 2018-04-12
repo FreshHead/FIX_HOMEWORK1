@@ -1,5 +1,6 @@
 package ru.univeralex.web.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -8,14 +9,14 @@ import java.time.LocalDate;
 public class User {
     private String name;
     private String password;
-    private LocalDate registrationDate;
+    private Date registrationDate;
 
     public User(String name, String password) {
         this.name = name;
         this.password = password;
     }
 
-    public User(String name, String password, LocalDate registrationDate) {
+    public User(String name, String password, Date registrationDate) {
         this.name = name;
         this.password = password;
         this.registrationDate = registrationDate;
@@ -37,11 +38,11 @@ public class User {
         this.password = password;
     }
 
-    public LocalDate getRegistrationDate() {
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(LocalDate registrationDate) {
+    public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
 }

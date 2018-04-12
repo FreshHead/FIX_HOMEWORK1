@@ -1,6 +1,8 @@
 package ru.univeralex.web;
 
-import ru.univeralex.web.model.UserDao;
+import org.mindrot.jbcrypt.BCrypt;
+import ru.univeralex.web.dao.UserDaoImpl;
+import ru.univeralex.web.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * @author - Alexander Kostarev
@@ -16,11 +19,11 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-    private UserDao userDao;
+    private UserDaoImpl userDaoImpl;
 
     @Override
     public void init() {
-        this.userDao = new UserDao();
+        this.userDaoImpl = new UserDaoImpl();
     }
 
     @Override
@@ -30,19 +33,20 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String name = req.getParameter("name");
+        String username = req.getParameter("name");
         String password = req.getParameter("password");
-
-        if (userDao.isUserExists(name, password)) {
-            // создаем для него сессию
+        if(validate(username, password)) {
             HttpSession session = req.getSession();
-            // кладем в атрибуты сессии атрибут user с именем пользователя
-            session.setAttribute("user", name);
+            session.setAttribute("user", username);
             resp.sendRedirect(req.getContextPath() + "/productList");
-//            req.getServletContext().getRequestDispatcher("/productList").forward(req, resp);
+
         } else {
             resp.sendRedirect(req.getContextPath() + "/login");
         }
+    }
 
+    private boolean validate(String username, String password) {
+        Optional<User> user = userDaoImpl.findByUsername(username);
+        return user.filter(user1 -> BCrypt.checkpw(password, user1.getPassword())).isPresent();
     }
 }
