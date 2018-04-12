@@ -1,7 +1,7 @@
 package ru.univeralex.web;
 
 import org.mindrot.jbcrypt.BCrypt;
-import ru.univeralex.web.dao.UserDaoImpl;
+import ru.univeralex.web.dao.UserDaoJdbcImpl;
 import ru.univeralex.web.model.User;
 
 import javax.servlet.ServletException;
@@ -19,11 +19,11 @@ import java.util.Optional;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-    private UserDaoImpl userDaoImpl;
+    private UserDaoJdbcImpl userDaoJdbcImpl;
 
     @Override
     public void init() {
-        this.userDaoImpl = new UserDaoImpl();
+        this.userDaoJdbcImpl = new UserDaoJdbcImpl();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     private boolean validate(String username, String password) {
-        Optional<User> user = userDaoImpl.findByUsername(username);
+        Optional<User> user = userDaoJdbcImpl.findByUsername(username);
         return user.filter(user1 -> BCrypt.checkpw(password, user1.getPassword())).isPresent();
     }
 }

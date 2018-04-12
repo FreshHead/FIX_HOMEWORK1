@@ -2,7 +2,7 @@ package ru.univeralex.web;
 
 import org.mindrot.jbcrypt.BCrypt;
 import ru.univeralex.web.model.User;
-import ru.univeralex.web.dao.UserDaoImpl;
+import ru.univeralex.web.dao.UserDaoJdbcImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,16 +20,16 @@ import java.util.List;
 @WebServlet("/signUp")
 public class SignUpServlet extends HttpServlet {
 
-    private UserDaoImpl userDaoImpl;
+    private UserDaoJdbcImpl userDaoJdbcImpl;
 
     @Override
     public void init() {
-        this.userDaoImpl = new UserDaoImpl();
+        this.userDaoJdbcImpl = new UserDaoJdbcImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<User> users = userDaoImpl.findAll();
+        List<User> users = userDaoJdbcImpl.findAll();
         req.setAttribute("usersFromServer", users);
         RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/jsp/signUp.jsp");
         dispatcher.forward(req, resp);
@@ -39,7 +39,7 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
-        userDaoImpl.save(new User(name, BCrypt.hashpw(password,BCrypt.gensalt())));
+        userDaoJdbcImpl.save(new User(name, BCrypt.hashpw(password,BCrypt.gensalt())));
         HttpSession session = req.getSession();
         session.setAttribute("user", name);
         resp.sendRedirect(req.getContextPath() + "/productList");
