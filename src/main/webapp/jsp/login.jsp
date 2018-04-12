@@ -10,6 +10,7 @@
 <div class="wrapper">
     <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading">Please login</h2>
+        <p><a href="/signUp">Don't have an account?</a></p>
         <input type="text" class="form-control" id="name" name="name" placeholder="Username" required=""
                autofocus=""/>
         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required=""/>
