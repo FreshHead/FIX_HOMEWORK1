@@ -35,11 +35,26 @@
     </label>
     <input type="submit" value="Add product" name="add">
 </form>
+
 <form method="post" action="/productList">
     <label for="id">Product id
         <input class="input-field" type="text" id="id" name="id">
     </label>
     <input type="submit" value="Delete product" name="delete">
 </form>
+
+<form method="post" action="/productList">
+    <label for="id">Product id
+        <input class="input-field" type="text" name="id">
+    </label>
+    <label for="name">Product name
+        <input class="input-field" type="text" name="name">
+    </label>
+    <label for="cost">Product cost
+        <input class="input-field" type="text" name="cost">
+    </label>
+    <input type="submit" value="Update product" name="update">
+</form>
+
 <p><a href="/officeList">Wanna find our office?</a></p>
 </html>

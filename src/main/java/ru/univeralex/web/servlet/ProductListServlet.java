@@ -44,8 +44,13 @@ public class ProductListServlet extends HttpServlet {
             Double productCost = Double.valueOf(req.getParameter("cost"));
             productDao.save(new Product(productName, productCost));
         } else if (req.getParameter("delete") != null) {
-            Integer id = Integer.valueOf(req.getParameter("id"));
-            productDao.delete(id);
+            Integer productId = Integer.valueOf(req.getParameter("id"));
+            productDao.delete(productId);
+        } else if (req.getParameter("update") != null) {
+            Integer productId = Integer.valueOf(req.getParameter("id"));
+            String productName = req.getParameter("name");
+            Double productCost = Double.valueOf(req.getParameter("cost"));
+            productDao.update(new Product(productId, productName, productCost));
         }
 
         doGet(req, resp);

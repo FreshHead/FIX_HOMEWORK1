@@ -46,7 +46,8 @@ public class ProductDaoJdbcTemplateImpl implements ProductDao {
 
     @Override
     public void update(Product model) {
-
+        String sql = "UPDATE product SET name = ?, cost = ? WHERE product_id = ?";
+        template.update(sql, model.getName(), model.getCost(), model.getId());
     }
 
     @Override
