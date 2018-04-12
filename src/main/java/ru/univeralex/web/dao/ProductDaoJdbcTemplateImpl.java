@@ -51,7 +51,7 @@ public class ProductDaoJdbcTemplateImpl implements ProductDao {
 
     @Override
     public void delete(Integer id) {
-
+        template.update("DELETE FROM product WHERE product_id = ?", id);
     }
 
     @Override

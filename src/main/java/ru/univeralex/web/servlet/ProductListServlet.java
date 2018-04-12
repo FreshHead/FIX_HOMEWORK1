@@ -39,9 +39,15 @@ public class ProductListServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String productName = req.getParameter("name");
-        Double productCost = Double.valueOf(req.getParameter("cost"));
-        productDao.save(new Product(productName, productCost));
+        if (req.getParameter("add") != null) {
+            String productName = req.getParameter("name");
+            Double productCost = Double.valueOf(req.getParameter("cost"));
+            productDao.save(new Product(productName, productCost));
+        } else if (req.getParameter("delete") != null) {
+            Integer id = Integer.valueOf(req.getParameter("id"));
+            productDao.delete(id);
+        }
+
         doGet(req, resp);
     }
 }

@@ -17,6 +17,9 @@ public class Product {
         this.cost = cost;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -25,5 +28,6 @@ public class Product {
     public Double getCost() {
         return cost;
     }
+
 
 }
