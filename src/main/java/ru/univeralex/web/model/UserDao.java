@@ -1,5 +1,7 @@
 package ru.univeralex.web.model;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -27,12 +29,13 @@ public class UserDao {
             e.printStackTrace();
         }
     }
+
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM security.user");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM security.user;");
             while (resultSet.next()) {
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
@@ -50,10 +53,10 @@ public class UserDao {
     public void addUser(User user) {
         try {
             Statement statement = connection.createStatement();
-
+            String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
             statement.executeQuery(
                     "INSERT INTO security.user(username, password, registration_date) " +
-                            "VALUES('" + user.getName() + "', '" + user.getPassword() + "', NOW())"
+                            "VALUES('" + user.getName() + "', '" + hashedPassword + "', NOW())"
             );
         } catch (SQLException e) {
             e.printStackTrace();
@@ -66,9 +69,15 @@ public class UserDao {
 
             ResultSet resultSet = statement.executeQuery(
                     "SELECT * FROM security.user " +
-                            "WHERE username = '" + name + "' AND password = '" + password + "'"
+                            "WHERE username = '" + name + "';"
             );
-            return resultSet.next();
+            if (resultSet.next()) {
+                String hashedPassword = resultSet.getString("password");
+                if (BCrypt.checkpw(password, hashedPassword)) {
+                    return true;
+                }
+            }
+            return false;
         } catch (SQLException e) {
             e.printStackTrace();
         }
