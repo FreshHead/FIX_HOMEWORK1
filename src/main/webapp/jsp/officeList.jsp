@@ -17,20 +17,24 @@
         <th>Name</th>
         <th>Cost</th>
     </tr>
-    <c:forEach items="${products}" var="product">
+    <c:forEach items="${offices}" var="office">
         <tr>
-            <td>${product.name}</td>
-            <td>${product.cost}</td>
+            <td>${office.name}</td>
+            <td>${office.address}</td>
+            <td>${office.phone}</td>
         </tr>
     </c:forEach>
 </table>
-<form method="post" action="/productList">
-    <label for="name">Product name
+<form method="post" action="/officeList">
+    <label for="name">Office name
         <input class="input-field" type="text" id="name" name="name">
     </label>
-    <label for="cost">Product cost
-        <input class="input-field" type="text" id="cost" name="cost">
+    <label for="address">Office address
+        <input class="input-field" type="text" id="address" name="address">
     </label>
-    <input type="submit" value="Add product">
+    <label for="phone">Office phone
+        <input class="input-field" type="text" id="phone" name="phone">
+    </label>
+    <input type="submit" value="Add office">
 </form>
 </html>

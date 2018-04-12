@@ -1,4 +1,4 @@
-package ru.univeralex.web;
+package ru.univeralex.web.servlet;
 
 import org.mindrot.jbcrypt.BCrypt;
 import ru.univeralex.web.model.User;

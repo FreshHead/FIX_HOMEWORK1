@@ -1,10 +1,9 @@
-package ru.univeralex.web;
+package ru.univeralex.web.servlet;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.univeralex.web.dao.ProductDao;
 import ru.univeralex.web.dao.ProductDaoJdbcTemplateImpl;
 import ru.univeralex.web.model.Product;
-import ru.univeralex.web.dao.ProductDaoImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import java.io.IOException;
 
 /**
@@ -35,7 +33,7 @@ public class ProductListServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setAttribute("products", productDao.findAll());
-        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/showProductList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/productList.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -46,5 +44,4 @@ public class ProductListServlet extends HttpServlet {
         productDao.save(new Product(productName, productCost));
         doGet(req, resp);
     }
-
 }
