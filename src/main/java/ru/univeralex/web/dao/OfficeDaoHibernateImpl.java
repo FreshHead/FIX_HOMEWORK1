@@ -32,17 +32,29 @@ public class OfficeDaoHibernateImpl implements OfficeDao {
 
     @Override
     public void save(Office model) {
-
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(model);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
     public void update(Office model) {
-
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.update(model);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
     public void delete(Integer id) {
-
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.delete(session.load(Office.class, id));
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override

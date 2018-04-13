@@ -1,5 +1,9 @@
 package ru.univeralex.web.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * @author - Alexander Kostarev
  */
@@ -9,15 +13,21 @@ public class Office {
     private String address;
     private String phone;
 
+
+
     public Office(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phone = phone;
     }
 
-    public Office() {
+    public Office(int id, String name, String address, String phone) {
+        this(name, address, phone);
+        this.id = id;
     }
 
+    public Office() {
+    }
 
     public int getId() {
         return id;

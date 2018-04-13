@@ -14,11 +14,14 @@
 
 <table>
     <tr>
+        <th>Id</th>
         <th>Name</th>
         <th>Cost</th>
+        <th>Phone</th>
     </tr>
     <c:forEach items="${offices}" var="office">
         <tr>
+            <td>${office.id}</td>
             <td>${office.name}</td>
             <td>${office.address}</td>
             <td>${office.phone}</td>
@@ -35,6 +38,29 @@
     <label for="phone">Office phone
         <input class="input-field" type="text" id="phone" name="phone">
     </label>
-    <input type="submit" value="Add office">
+    <input type="submit" value="Add office" name="add">
+</form>
+
+<form method="post" action="/officeList">
+    <label for="id">Office id
+        <input class="input-field" type="text" id="id" name="id">
+    </label>
+    <input type="submit" value="Delete office" name="delete">
+</form>
+
+<form method="post" action="/officeList">
+    <label for="id">Office id
+        <input class="input-field" type="text" name="id">
+    </label>
+    <label for="name">Office name
+        <input class="input-field" type="text" name="name">
+    </label>
+    <label for="address">Office address
+        <input class="input-field" type="text" name="address">
+    </label>
+    <label for="phone">Office phone
+        <input class="input-field" type="text" name="phone">
+    </label>
+    <input type="submit" value="Update office" name="update">
 </form>
 </html>

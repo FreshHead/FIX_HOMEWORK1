@@ -33,10 +33,21 @@ public class OfficeListServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String officeName = req.getParameter("name");
-        String officeAddress = req.getParameter("address");
-        String officePhone = req.getParameter("phone");
-        officeDao.save(new Office(officeName, officeAddress, officePhone));
+        if (req.getParameter("add") != null) {
+            String officeName = req.getParameter("name");
+            String officeAddress = req.getParameter("address");
+            String officePhone = req.getParameter("phone");
+            officeDao.save(new Office(officeName, officeAddress, officePhone));
+        } else if (req.getParameter("delete") != null) {
+            Integer officeId = Integer.valueOf(req.getParameter("id"));
+            officeDao.delete(officeId);
+        } else if (req.getParameter("update") != null) {
+            Integer officeId = Integer.valueOf(req.getParameter("id"));
+            String officeName = req.getParameter("name");
+            String officeAddress = req.getParameter("address");
+            String officePhone = req.getParameter("phone");
+            officeDao.update(new Office(officeId, officeName, officeAddress, officePhone));
+        }
         doGet(req, resp);
     }
 }

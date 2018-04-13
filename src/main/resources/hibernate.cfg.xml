@@ -23,7 +23,6 @@
         <property name = "hibernate.connection.password">
             qwerty_prod
         </property>
-
         <mapping resource = "ru/univeralex/hibernate/Office.hbm.xml"/>
 
     </session-factory>

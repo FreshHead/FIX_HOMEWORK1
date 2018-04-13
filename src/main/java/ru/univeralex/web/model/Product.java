@@ -5,16 +5,17 @@ public class Product {
     private String name;
     private Double cost;
 
-    public Product(Integer id, String name, Double cost) {
-        this.id = id;
-        this.name = name;
-        this.cost = cost;
-    }
+
 
     public Product(String name, Double cost) {
         this.id = null;
         this.name = name;
         this.cost = cost;
+    }
+
+    public Product(Integer id, String name, Double cost) {
+        this(name, cost);
+        this.id = id;
     }
 
     public Integer getId() {
