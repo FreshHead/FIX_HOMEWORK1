@@ -49,12 +49,12 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public void update(User model) {
-
+        //Implementation Does not needed
     }
 
     @Override
     public void delete(Integer id) {
-
+        //Implementation Does not needed
     }
 
     @Override

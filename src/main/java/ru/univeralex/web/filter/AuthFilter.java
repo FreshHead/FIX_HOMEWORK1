@@ -11,7 +11,7 @@ import java.io.IOException;
  * @author - Alexander Kostarev
  */
 @WebFilter("/productList")
-public class AuthFilter implements Filter{
+public class AuthFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) {
 
@@ -21,8 +21,8 @@ public class AuthFilter implements Filter{
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
         // выполняем преобразование Servlet-запросов-ответов в HTTP-запросы-ответы
-        HttpServletRequest request = (HttpServletRequest)servletRequest;
-        HttpServletResponse response = (HttpServletResponse)servletResponse;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         // смотрим, есть ли сессия для данного запроса (проверяется наличие Cookie с названием JSESSIONID
         HttpSession session = request.getSession(false);

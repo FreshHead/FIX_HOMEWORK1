@@ -4,19 +4,19 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="ru.univeralex.web.model">
-    <class name = "Office" table = "office">
+    <class name="Office" table="office">
 
-        <meta attribute = "class-description">
+        <meta attribute="class-description">
             This class contains the office detail.
         </meta>
 
-        <id name = "id" type = "int" column = "office_id">
+        <id name="id" type="int" column="office_id">
             <generator class="increment"/>
         </id>
 
-        <property name = "name" column = "name" type = "string"/>
-        <property name = "address" column = "address" type = "string"/>
-        <property name = "phone" column = "phone" type = "string"/>
+        <property name="name" column="name" type="string"/>
+        <property name="address" column="address" type="string"/>
+        <property name="phone" column="phone" type="string"/>
 
     </class>
 </hibernate-mapping>

@@ -1,8 +1,8 @@
 package ru.univeralex.web.servlet;
 
 import org.mindrot.jbcrypt.BCrypt;
-import ru.univeralex.web.model.User;
 import ru.univeralex.web.dao.UserDaoJdbcImpl;
+import ru.univeralex.web.model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,7 +39,7 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("password");
-        userDaoJdbcImpl.save(new User(name, BCrypt.hashpw(password,BCrypt.gensalt())));
+        userDaoJdbcImpl.save(new User(name, BCrypt.hashpw(password, BCrypt.gensalt())));
         HttpSession session = req.getSession();
         session.setAttribute("user", name);
         resp.sendRedirect(req.getContextPath() + "/productList");

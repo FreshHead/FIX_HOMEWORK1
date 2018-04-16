@@ -1,9 +1,5 @@
 package ru.univeralex.web.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  * @author - Alexander Kostarev
  */
@@ -12,7 +8,6 @@ public class Office {
     private String name;
     private String address;
     private String phone;
-
 
 
     public Office(String name, String address, String phone) {
@@ -63,5 +58,4 @@ public class Office {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
 }

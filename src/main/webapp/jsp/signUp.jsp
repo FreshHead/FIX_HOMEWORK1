@@ -11,7 +11,7 @@
 <body>
 
 <div class="wrapper">
-    <form class="form-signin"  method="post" action="/signUp">
+    <form class="form-signin" method="post" action="/signUp">
         <h2 class="form-signin-heading">Please SignUp</h2>
         <p><a href="/login">You already registered?</a></p>
         <input type="text" class="form-control" id="name" name="name" placeholder="Username" required=""
@@ -21,18 +21,18 @@
     </form>
     <div class="registered">
         <h2 class="form-signin-heading">Registered users:</h2>
-    <table>
-        <tr>
-            <th>User name</th>
-            <th>Registration date</th>
-        </tr>
-        <c:forEach items="${usersFromServer}" var="user">
+        <table>
             <tr>
-                <td>${user.name}</td>
-                <td>${user.registrationDate}</td>
+                <th>User name</th>
+                <th>Registration date</th>
             </tr>
-        </c:forEach>
-    </table>
+            <c:forEach items="${usersFromServer}" var="user">
+                <tr>
+                    <td>${user.name}</td>
+                    <td>${user.registrationDate}</td>
+                </tr>
+            </c:forEach>
+        </table>
     </div>
 </div>
 

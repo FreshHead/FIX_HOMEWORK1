@@ -1,7 +1,6 @@
 package ru.univeralex.web.model;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 /**
  * @author - Alexander Kostarev

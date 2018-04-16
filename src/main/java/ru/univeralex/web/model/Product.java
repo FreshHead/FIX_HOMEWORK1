@@ -6,7 +6,6 @@ public class Product {
     private Double cost;
 
 
-
     public Product(String name, Double cost) {
         this.id = null;
         this.name = name;
@@ -29,6 +28,4 @@ public class Product {
     public Double getCost() {
         return cost;
     }
-
-
 }

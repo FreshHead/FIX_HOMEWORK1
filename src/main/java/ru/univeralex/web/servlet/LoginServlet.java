@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String username = req.getParameter("name");
         String password = req.getParameter("password");
-        if(validate(username, password)) {
+        if (validate(username, password)) {
             HttpSession session = req.getSession();
             session.setAttribute("user", username);
             resp.sendRedirect(req.getContextPath() + "/productList");
