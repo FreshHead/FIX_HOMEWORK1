@@ -1,7 +1,7 @@
 package ru.univeralex.web.servlet;
 
-import ru.univeralex.web.dao.OfficeDao;
-import ru.univeralex.web.dao.OfficeDaoHibernateImpl;
+import ru.univeralex.web.dao.api.OfficeDao;
+import ru.univeralex.web.dao.impl.OfficeDaoHibernateImpl;
 import ru.univeralex.web.model.Office;
 
 import javax.servlet.RequestDispatcher;

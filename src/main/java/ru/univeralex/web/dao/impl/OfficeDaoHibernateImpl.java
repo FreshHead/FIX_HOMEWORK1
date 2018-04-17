@@ -1,8 +1,9 @@
-package ru.univeralex.web.dao;
+package ru.univeralex.web.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import ru.univeralex.web.dao.api.OfficeDao;
 import ru.univeralex.web.model.Office;
 
 import java.util.List;

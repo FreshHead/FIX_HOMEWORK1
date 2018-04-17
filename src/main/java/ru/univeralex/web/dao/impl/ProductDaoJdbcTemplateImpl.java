@@ -1,7 +1,8 @@
-package ru.univeralex.web.dao;
+package ru.univeralex.web.dao.impl;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import ru.univeralex.web.dao.api.ProductDao;
 import ru.univeralex.web.model.Product;
 
 import javax.sql.DataSource;

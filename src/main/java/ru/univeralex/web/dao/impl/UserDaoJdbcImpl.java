@@ -1,5 +1,6 @@
-package ru.univeralex.web.dao;
+package ru.univeralex.web.dao.impl;
 
+import ru.univeralex.web.dao.api.UserDao;
 import ru.univeralex.web.model.User;
 
 import java.sql.*;

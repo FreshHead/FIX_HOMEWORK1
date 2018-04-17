@@ -1,7 +1,7 @@
 package ru.univeralex.web.servlet;
 
 import org.mindrot.jbcrypt.BCrypt;
-import ru.univeralex.web.dao.UserDaoJdbcImpl;
+import ru.univeralex.web.dao.impl.UserDaoJdbcImpl;
 import ru.univeralex.web.model.User;
 
 import javax.servlet.ServletException;
