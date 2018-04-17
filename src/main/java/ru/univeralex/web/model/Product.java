@@ -1,5 +1,8 @@
 package ru.univeralex.web.model;
 
+/**
+ * @author - Alexander Kostarev
+ */
 public class Product {
     private Integer id;
     private String name;

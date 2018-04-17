@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class ProductListServlet
+ * @author - Alexander Kostarev
  */
 @WebServlet("/productList")
 public class ProductListServlet extends HttpServlet {
