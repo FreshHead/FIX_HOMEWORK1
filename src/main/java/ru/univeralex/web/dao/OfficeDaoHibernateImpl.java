@@ -1,9 +1,7 @@
 package ru.univeralex.web.dao;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import ru.univeralex.web.model.Office;
 
@@ -60,18 +58,9 @@ public class OfficeDaoHibernateImpl implements OfficeDao {
     @Override
     public List<Office> findAll() {
         Session session = factory.openSession();
-        Transaction tx = null;
-        List<Office> offices = null;
-        try {
-            tx = session.beginTransaction();
-            offices = session.createQuery("FROM Office").list();
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+        session.beginTransaction();
+        List<Office> offices = session.createQuery("FROM Office").list();
+        session.close();
         return offices;
     }
 }
