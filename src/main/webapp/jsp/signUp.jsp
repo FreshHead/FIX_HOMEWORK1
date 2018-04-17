@@ -11,16 +11,16 @@
 <body>
 
 <div class="wrapper">
-    <form class="form-signin" method="post" action="/signUp">
-        <h2 class="form-signin-heading">Please SignUp</h2>
-        <p><a href="/login">You already registered?</a></p>
+    <form class="form" method="post" action="/signUp">
+        <h2 class="form-heading">Please SignUp</h2>
+        <p><a href="login">You already registered?</a></p>
         <input type="text" class="form-control" id="name" name="name" placeholder="Username" required=""
                autofocus=""/>
         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required=""/>
         <input type="submit" value="Sign Up" class="btn btn-lg btn-primary btn-block">
     </form>
     <div class="registered">
-        <h2 class="form-signin-heading">Registered users:</h2>
+        <h2 class="form-heading">Registered users:</h2>
         <table>
             <tr>
                 <th>User name</th>
