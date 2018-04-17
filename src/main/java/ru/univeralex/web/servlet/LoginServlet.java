@@ -1,6 +1,7 @@
 package ru.univeralex.web.servlet;
 
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.univeralex.web.dao.impl.UserDaoJdbcImpl;
 import ru.univeralex.web.model.User;
 
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.Properties;
 
 /**
  * @author - Alexander Kostarev
@@ -19,11 +22,24 @@ import java.util.Optional;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-    private UserDaoJdbcImpl userDaoJdbcImpl;
+    private UserDaoJdbcImpl userDao;
 
     @Override
     public void init() {
-        this.userDaoJdbcImpl = new UserDaoJdbcImpl();
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        Properties properties = new Properties();
+
+        try {
+            properties.load(new FileInputStream(getServletContext().getRealPath("/WEB-INF/classes/db.properties")));
+            dataSource.setUrl(properties.getProperty("db.url"));
+            dataSource.setUsername(properties.getProperty("db.username"));
+            dataSource.setPassword(properties.getProperty("db.password"));
+            dataSource.setDriverClassName(properties.getProperty("db.driverClassName"));
+
+            this.userDao = new UserDaoJdbcImpl(dataSource);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
     }
 
     @Override
@@ -46,7 +62,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     private boolean validate(String username, String password) {
-        Optional<User> user = userDaoJdbcImpl.findByUsername(username);
+        Optional<User> user = userDao.findByUsername(username);
         return user.filter(user1 -> BCrypt.checkpw(password, user1.getPassword())).isPresent();
     }
 }

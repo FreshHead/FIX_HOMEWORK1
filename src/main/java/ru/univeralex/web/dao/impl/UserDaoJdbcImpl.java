@@ -3,6 +3,7 @@ package ru.univeralex.web.dao.impl;
 import ru.univeralex.web.dao.api.UserDao;
 import ru.univeralex.web.model.User;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,24 +12,32 @@ import java.util.Optional;
 /**
  * @author - Alexander Kostarev
  */
-public class UserDaoJdbcImpl implements UserDao {
+public class UserDaoJdbcImpl implements ru.univeralex.web.dao.api.UserDao {
     private Connection connection;
 
-    public UserDaoJdbcImpl() {
-        String dbUser = "security_manager";
-        String dbPassword = "qwerty_sec";
-        String connectionUrl = "jdbc:postgresql://localhost:5432/fix_course_product_db";
+    public UserDaoJdbcImpl(DataSource dataSource) {
         try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            connection = DriverManager.getConnection(connectionUrl, dbUser, dbPassword);
+            this.connection = dataSource.getConnection();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new IllegalStateException(e);
         }
     }
+
+//    public UserDaoJdbcImpl() {
+//        String dbUser = "security_manager";
+//        String dbPassword = "qwerty_sec";
+//        String connectionUrl = "jdbc:postgresql://localhost:5432/fix_course_product_db";
+//        try {
+//            Class.forName("org.postgresql.Driver");
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            connection = DriverManager.getConnection(connectionUrl, dbUser, dbPassword);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public Optional<User> find(Integer id) {
