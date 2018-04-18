@@ -4,6 +4,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import ru.univeralex.web.dao.impl.UserDaoJdbcImpl;
 import ru.univeralex.web.model.User;
+import ru.univeralex.web.provider.impl.DataSourceProviderImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,20 +28,7 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     public void init() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        Properties properties = new Properties();
-
-        try {
-            properties.load(new FileInputStream(getServletContext().getRealPath("/WEB-INF/classes/db.properties")));
-            dataSource.setUrl(properties.getProperty("db.url"));
-            dataSource.setUsername(properties.getProperty("db.username"));
-            dataSource.setPassword(properties.getProperty("db.password"));
-            dataSource.setDriverClassName(properties.getProperty("db.driverClassName"));
-
-            this.userDao = new UserDaoJdbcImpl(dataSource);
-        } catch (IOException e) {
-            throw new IllegalStateException(e);
-        }
+        this.userDao = new UserDaoJdbcImpl(new DataSourceProviderImpl().getDatasource());
     }
 
     @Override

@@ -23,22 +23,6 @@ public class UserDaoJdbcImpl implements ru.univeralex.web.dao.api.UserDao {
         }
     }
 
-//    public UserDaoJdbcImpl() {
-//        String dbUser = "security_manager";
-//        String dbPassword = "qwerty_sec";
-//        String connectionUrl = "jdbc:postgresql://localhost:5432/fix_course_product_db";
-//        try {
-//            Class.forName("org.postgresql.Driver");
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            connection = DriverManager.getConnection(connectionUrl, dbUser, dbPassword);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     @Override
     public Optional<User> find(Integer id) {
         return Optional.empty();
