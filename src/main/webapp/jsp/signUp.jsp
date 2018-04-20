@@ -19,6 +19,7 @@
         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required=""/>
         <input type="submit" value="Sign Up" class="btn btn-lg btn-primary btn-block">
     </form>
+
     <div class="registered">
         <h2 class="form-heading">Registered users:</h2>
         <table class="table table-striped">

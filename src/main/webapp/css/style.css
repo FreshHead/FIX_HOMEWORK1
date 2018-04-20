@@ -2,7 +2,9 @@
     margin-top: 80px;
     margin-bottom: 80px;
 }
-
+/*table, th, td {*/
+    /*border: 1px solid black;*/
+/*}*/
 .form {
     max-width: 380px;
     padding: 15px 35px 45px;
