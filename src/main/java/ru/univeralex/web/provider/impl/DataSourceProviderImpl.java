@@ -14,10 +14,10 @@ import java.util.Properties;
 public class DataSourceProviderImpl implements DataSourceProvider {
     private DriverManagerDataSource dataSource;
 
-    public DataSourceProviderImpl() {
+    public DataSourceProviderImpl(String propertyFileName) {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         Properties properties = new Properties();
-        try (InputStream resourceStream = loader.getResourceAsStream("db.properties")) {
+        try (InputStream resourceStream = loader.getResourceAsStream(propertyFileName)) {
             properties.load(resourceStream);
         } catch (IOException e) {
             e.printStackTrace();

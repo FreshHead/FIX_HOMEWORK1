@@ -1,9 +1,13 @@
 package ru.univeralex.web.servlet;
 
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import ru.univeralex.web.config.spring.AppConfig;
 import ru.univeralex.web.dao.impl.UserDaoJdbcImpl;
 import ru.univeralex.web.model.User;
+import ru.univeralex.web.provider.api.DataSourceProvider;
 import ru.univeralex.web.provider.impl.DataSourceProviderImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -28,7 +32,9 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     public void init() {
-        this.userDao = new UserDaoJdbcImpl(new DataSourceProviderImpl().getDatasource());
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        DataSourceProvider dataSourceProvider = context.getBean(DataSourceProvider.class);
+        this.userDao = new UserDaoJdbcImpl(dataSourceProvider.getDatasource());
     }
 
     @Override
