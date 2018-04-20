@@ -4,9 +4,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.univeralex.web.config.spring.AppConfig;
-import ru.univeralex.web.dao.impl.UserDaoJdbcImpl;
+import ru.univeralex.web.dao.api.UserDao;
 import ru.univeralex.web.model.User;
-import ru.univeralex.web.provider.api.DataSourceProvider;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,13 +23,12 @@ import java.util.List;
 @WebServlet("/signUp")
 public class SignUpServlet extends HttpServlet {
 
-    private UserDaoJdbcImpl userDao;
+    private UserDao userDao;
 
     @Override
     public void init() {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        DataSourceProvider dataSourceProvider = context.getBean(DataSourceProvider.class);
-        this.userDao = new UserDaoJdbcImpl(dataSourceProvider.getDatasource());
+        this.userDao = context.getBean(UserDao.class);
     }
 
     @Override
