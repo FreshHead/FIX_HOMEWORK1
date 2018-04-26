@@ -3,8 +3,8 @@ package ru.univeralex.web.dao.impl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.univeralex.web.dao.api.OfficeDao;
-import ru.univeralex.web.model.Office;
+import ru.univeralex.web.dao.OfficeDao;
+import ru.univeralex.web.models.Office;
 
 import java.util.List;
 import java.util.Optional;

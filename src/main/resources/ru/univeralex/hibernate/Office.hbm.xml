@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="ru.univeralex.web.model">
-    <class name="Office" table="office">
+    <class name="ru.univeralex.web.models.Office" table="office">
 
         <meta attribute="class-description">
             This class contains the office detail.

@@ -1,4 +1,4 @@
-package ru.univeralex.web.dao.api;
+package ru.univeralex.web.dao;
 
 import java.util.List;
 import java.util.Optional;

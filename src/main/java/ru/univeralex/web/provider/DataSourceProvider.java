@@ -1,4 +1,4 @@
-package ru.univeralex.web.provider.api;
+package ru.univeralex.web.provider;
 
 import javax.sql.DataSource;
 

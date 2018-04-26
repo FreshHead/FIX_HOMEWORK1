@@ -1,4 +1,4 @@
-package ru.univeralex.web.filter;
+package ru.univeralex.web.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

@@ -3,7 +3,7 @@ package ru.univeralex.web.config.spring;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import ru.univeralex.web.dao.api.UserDao;
+import ru.univeralex.web.dao.UserDao;
 import ru.univeralex.web.dao.impl.UserDaoJdbcImpl;
 import ru.univeralex.web.provider.impl.DataSourceProviderImpl;
 

@@ -1,4 +1,4 @@
-package ru.univeralex.web.model;
+package ru.univeralex.web.models;
 
 /**
  * @author - Alexander Kostarev

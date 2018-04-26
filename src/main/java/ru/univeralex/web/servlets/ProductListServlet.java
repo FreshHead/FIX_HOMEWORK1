@@ -1,9 +1,9 @@
-package ru.univeralex.web.servlet;
+package ru.univeralex.web.servlets;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import ru.univeralex.web.dao.api.ProductDao;
+import ru.univeralex.web.dao.ProductDao;
 import ru.univeralex.web.dao.impl.ProductDaoJdbcTemplateImpl;
-import ru.univeralex.web.model.Product;
+import ru.univeralex.web.models.Product;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

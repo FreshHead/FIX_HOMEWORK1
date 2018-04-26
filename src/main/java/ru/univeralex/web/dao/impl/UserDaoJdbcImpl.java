@@ -1,7 +1,7 @@
 package ru.univeralex.web.dao.impl;
 
-import ru.univeralex.web.dao.api.UserDao;
-import ru.univeralex.web.model.User;
+import ru.univeralex.web.dao.UserDao;
+import ru.univeralex.web.models.User;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -12,7 +12,7 @@ import java.util.Optional;
 /**
  * @author - Alexander Kostarev
  */
-public class UserDaoJdbcImpl implements ru.univeralex.web.dao.api.UserDao {
+public class UserDaoJdbcImpl implements UserDao {
     private Connection connection;
 
     public UserDaoJdbcImpl(DataSource dataSource) {

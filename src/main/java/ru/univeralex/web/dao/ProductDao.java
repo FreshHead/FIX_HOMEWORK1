@@ -1,6 +1,6 @@
-package ru.univeralex.web.dao.api;
+package ru.univeralex.web.dao;
 
-import ru.univeralex.web.model.Product;
+import ru.univeralex.web.models.Product;
 
 /**
  * @author - Alexander Kostarev

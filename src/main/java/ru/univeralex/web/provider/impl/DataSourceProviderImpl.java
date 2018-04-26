@@ -1,7 +1,7 @@
 package ru.univeralex.web.provider.impl;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import ru.univeralex.web.provider.api.DataSourceProvider;
+import ru.univeralex.web.provider.DataSourceProvider;
 
 import javax.sql.DataSource;
 import java.io.IOException;
